@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class BowController : MonoBehaviour
 {
+    public static BowController instance;
     [SerializeField] private GameObject arrowPrefab, currentPrefab;
     private Vector2 startTouchPos, endTouchPos;
     private Rigidbody2D arrowRig;
     [SerializeField] private float bowForce = 0f;
 
+    [SerializeField] private byte arrowCount
+    {
+        get 
+        { 
+            return arrowCount; 
+        }
+        set
+        {
+            if(value <= 0)
+            {
+                LevelController.instance.Loose();
+            }
+        }
+    }
 
-    // Update is called once per frame
+    private void Awake() => instance = this;
     private void Update()
     {
         if (Input.touchCount != 0)
@@ -38,4 +53,6 @@ public class BowController : MonoBehaviour
 
         }
     }
+
+    
 }

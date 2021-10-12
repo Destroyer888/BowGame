@@ -30,7 +30,7 @@ public class ArrowController : MonoBehaviour
             collider.enabled = false;
             transform.parent = collision.transform;
             Destroy(gameObject, 1f);
-            Debug.Log("shooted");
+            
         }
     }
 }
